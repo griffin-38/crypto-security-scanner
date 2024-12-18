@@ -174,4 +174,3 @@ filter.export_results('security_report.csv')
 
 ## License
 
-[Your chosen license, e.g., MIT]
