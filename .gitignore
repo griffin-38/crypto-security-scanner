@@ -1,0 +1,37 @@
+# Python environment
+venv/
+env/
+*.env
+.env
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+logs/
+
+# Analysis output files
+*.csv
+*.json
+output/
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+archived
+
+# Sensitive or local configuration
+config/*.yaml
