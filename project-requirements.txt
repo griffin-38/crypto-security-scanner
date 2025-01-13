@@ -18,6 +18,8 @@ pyarrow>=8.0.0  # Faster pandas operations
 
 # Development and Testing
 pytest>=7.1.2
+pytest-cov>=4.0.0  # For test coverage reporting
+pytest-mock>=3.10.0  # For better mocking capabilities
 pylint>=2.13.5
 mypy>=0.950
 

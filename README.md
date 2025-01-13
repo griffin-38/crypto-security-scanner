@@ -172,5 +172,7 @@ filter.export_results('security_report.csv')
 3. Implement features
 4. Submit pull request
 
+****
 ## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
