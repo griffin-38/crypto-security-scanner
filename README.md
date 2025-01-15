@@ -1,178 +1,153 @@
-# Crypto Token Security Analysis Tool
+# Crypto Token Security Tool
 
-## Overview
+A comprehensive security analysis tool for cryptocurrency tokens that integrates with multiple APIs to detect potential risks, scams, and suspicious patterns.
 
-This Python-based tool provides comprehensive security and quality analysis for cryptocurrency tokens, offering multi-layered filtering across various critical dimensions.
+## Features
 
-## Required APIs
+- Multi-API token analysis integration (RugCheck, TweetScout, DEXScreener, Rocker Universe)
+- Volume legitimacy verification
+- Contract security analysis
+- Blacklist management for suspicious tokens and developers
+- Comprehensive logging and monitoring
+- Async API integration for improved performance
+- Configurable security thresholds and parameters
 
-### 1. RugCheck.xyz
-- **Purpose**: Contract security analysis
-- **Endpoints Needed**:
-  * Contract risk assessment
-  * Honeypot detection
-  * Token verification status
-- **Pricing**: Varies (Check website for current pricing)
-- **Registration**: https://rugcheck.xyz
-- **API Documentation**: Contact RugCheck support
+## Prerequisites
 
-### 2. TweetScout.io
-- **Purpose**: Twitter audience analysis
-- **Endpoints Needed**:
-  * Social media score calculation
-  * Follower count
-  * Engagement rate analysis
-- **Pricing**: 
-  * Free tier available
-  * Paid plans for advanced features
-- **Registration**: https://tweetscout.io
-- **API Documentation**: Available in developer portal
+- Python 3.9+
+- pip
+- Virtual environment (recommended)
+- API keys for supported services
 
-### 3. DEXScreener API
-- **Purpose**: Token transaction and volume data
-- **Endpoints Needed**:
-  * Token pair information
-  * Transaction volume
-  * Liquidity metrics
-- **Pricing**: Free
-- **Documentation**: https://docs.dexscreener.com
+## Installation
 
-### 4. Rocker Universe API
-- **Purpose**: Additional token verification
-- **Endpoints Needed**:
-  * Token migration tracking
-  * Volume verification
-- **Pricing**: Varies
-- **Registration**: Contact Rocker Universe directly
-
-### 5. Optional APIs
-- CoinGecko API (Token metadata)
-- Moralis Web3 API (Blockchain data)
-
-### 6. Optional ENV file
-- Create .ENV file in your project
-- .env file contains placeholders for various API keys
-- Includes optional APIs for future expansion
-- Adds some basic configuration options
-
-## Command-Line Usage
-
-### Installation
-
+1. Clone the repository:
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/crypto-token-security-tool.git
-cd crypto-token-security-tool
+git clone https://github.com/yourusername/crypto-security.git
+cd crypto-security
+```
 
-# Create virtual environment
-python3 -m venv venv
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r project-requirements.txt
 ```
 
-### Configuration
-
-1. Create `.env` file:
+3. Install dependencies:
 ```bash
-# .env file in project root
-RUGCHECK_API_KEY=your_rugcheck_api_key
-TWEETSCOUT_API_KEY=your_tweetscout_api_key
-DEXSCREENER_API_KEY=your_dexscreener_api_key
-ROCKER_UNIVERSE_API_KEY=your_rocker_universe_api_key
+# For development
+pip install -r requirements-dev.txt
+
+# For production
+pip install -r requirements.txt
 ```
 
-2. Create `blacklist_config.yaml`:
+4. Configure environment variables:
 ```bash
-# Optional: Customize blacklists
-touch blacklist_config.yaml
+cp .env.example .env
+# Edit .env with your API keys and configurations
 ```
 
-### Running the Tool
+## Usage
 
-#### Basic Usage
-```bash
-# Run main script
-python crypto_security_filter.py
-
-# Analyze specific tokens
-python crypto_security_filter.py --tokens 0x123token1 0x456token2
-
-# Export results to CSV
-python crypto_security_filter.py --export csv
-
-# Filter by specific criteria
-python crypto_security_filter.py --min-volume 5000 --max-age 24
-```
-
-#### Advanced Commands
-```bash
-# Blacklist management
-python manage_blacklist.py add-token 0x123suspicious_address
-python manage_blacklist.py add-developer 0x456suspicious_dev
-
-# Generate detailed report
-python crypto_security_filter.py --report full
-```
-
-### Example Workflow
-
-1. Initialize APIs
-2. Load token list
-3. Run comprehensive analysis
-4. Generate security report
-5. Export results
+Basic usage example:
 
 ```python
-# Example Python usage
-from crypto_security_filter import CryptoSecurityFilter
+from crypto_security import CryptoSecurityFilter
+import asyncio
 
-# Initialize with API keys
-filter = CryptoSecurityFilter(
-    rugcheck_key=os.getenv('RUGCHECK_API_KEY'),
-    tweetscout_key=os.getenv('TWEETSCOUT_API_KEY')
-)
+async def analyze_tokens():
+    # Initialize the security filter
+    security_filter = CryptoSecurityFilter(
+        rugcheck_api_key='your_key',
+        rocker_universe_api_key='your_key'
+    )
+    
+    # Token data to analyze
+    tokens = [
+        {
+            'address': '0x123token_address',
+            'symbol': 'TOKEN1',
+            'volume': 5000,
+            'volume_1h': 500,
+            'volume_24h': 10000,
+            'developer_address': '0x456dev_address'
+        }
+    ]
+    
+    # Analyze tokens
+    results = await security_filter.analyze_tokens(tokens)
+    
+    # Process results
+    for token in results:
+        print(f"Token: {token['symbol']}")
+        print(f"Risk Level: {token.get('risk_level')}")
+        print(f"Security Score: {token.get('security_score')}")
+        print("---")
 
-# Analyze tokens
-verified_tokens = filter.filter_tokens(token_list)
-filter.export_results('security_report.csv')
+# Run the analysis
+asyncio.run(analyze_tokens())
 ```
 
-## Troubleshooting
+## API Integration
 
-- **API Connection Issues**: 
-  * Check API keys
-  * Verify network connection
-  * Review API documentation
+The tool supports the following APIs:
 
-- **Rate Limiting**:
-  * Implement exponential backoff
-  * Use API key rotation
-  * Respect API usage limits
+1. RugCheck.xyz
+   - Contract analysis
+   - Honeypot detection
+   - Risk assessment
 
-## Performance Tips
+2. TweetScout.io
+   - Social media analysis
+   - Community metrics
+   - Trend detection
 
-- Use asynchronous API calls
-- Implement caching
-- Batch token processing
-- Monitor API response times
+3. DEXScreener
+   - Market data
+   - Trading volume analysis
+   - Liquidity tracking
 
-## Legal and Ethical Considerations
+4. Rocker Universe
+   - Additional market metrics
+   - Token analytics
+   - Historical data
 
-- This tool is for informational purposes
-- Not financial advice
-- Users responsible for their own decisions
-- Comply with local regulations
+## Configuration
+
+See `ENV.md` for detailed configuration options and environment variables.
+
+## Testing
+
+Run the test suite:
+
+```bash
+# Run all tests
+pytest
+
+# Run with coverage report
+pytest --cov=crypto_security tests/
+
+# Run specific test file
+pytest tests/test_security_filter.py
+```
 
 ## Contributing
 
-1. Fork repository
-2. Create feature branch
-3. Implement features
-4. Submit pull request
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-****
+
+## Acknowledgments
+
+- RugCheck.xyz API
+- TweetScout.io API
+- DEXScreener API
+- Rocker Universe API
+
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
+This project is licensed under the MIT License - see the LICENSE file for details.
