@@ -1,3 +1,4 @@
+# tests/test_unit_1.py
 import pytest
 from unittest.mock import patch, Mock
 from dataclasses import asdict
@@ -6,8 +7,8 @@ import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Import your classes (adjust the import path as needed)
-from crypto_filter_script import (
+
+from crypto_security import (
     VolumeAnalyzer,
     RugCheckAPI,
     CryptoSecurityFilter,
@@ -150,7 +151,7 @@ class TestCryptoSecurityFilter:
         mock_logger.assert_called_once()
 
 def test_main():
-    with patch('crypto_filter_script.CryptoSecurityFilter') as MockFilter:
+    with patch('crypto_security.CryptoSecurityFilter') as MockFilter:
         instance = MockFilter.return_value
         instance.filter_tokens.return_value = [
             {
@@ -167,3 +168,5 @@ def test_main():
             assert False, "main() raised an exception"
         finally:
             pass
+
+        

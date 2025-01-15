@@ -1,9 +1,0 @@
-tokens:
-  - '0x123suspicious_token_address'
-developers:
-  - '0x456suspicious_dev_address'
-memecoins:
-  - 'DOGE'
-keywords:
-  - 'moon'
-  - 'rocket'

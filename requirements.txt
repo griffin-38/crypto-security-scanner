@@ -4,7 +4,7 @@ pandas>=1.4.2
 pyyaml>=6.0
 
 # API and Network
-aiohttp>=3.8.1  # For asynchronous API calls
+aiohttp>=3.8.1      # For asynchronous API calls
 python-dotenv>=0.20.0  # For environment variable management
 
 # Data Processing
@@ -14,15 +14,15 @@ numpy>=1.22.3
 logging>=0.5.1.2
 
 # Optional: For advanced data manipulation
-pyarrow>=8.0.0  # Faster pandas operations
+pyarrow>=8.0.0      # Faster pandas operations
 
 # Development and Testing
 pytest>=7.1.2
-pytest-cov>=4.0.0  # For test coverage reporting
-pytest-mock>=3.10.0  # For better mocking capabilities
 pylint>=2.13.5
 mypy>=0.950
 
 # Type Checking
 types-requests>=2.27.16
 types-PyYAML>=6.0.7
+
+
