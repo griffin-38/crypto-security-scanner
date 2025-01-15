@@ -19,7 +19,3 @@ jobs:
             OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-# Add the following secret to your repository under 
-# Settings > Secrets and variables > Actions > New repository secret > Add secret:
-            # Name = OPENAI_KEY
-            # Secret = <your key>
