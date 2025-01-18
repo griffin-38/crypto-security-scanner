@@ -1,6 +1,6 @@
-# Crypto Token Security Tool
+# Crypto Security Scanner
 
-A comprehensive security analysis tool for cryptocurrency tokens that integrates with multiple APIs to detect potential risks, scams, and suspicious patterns.
+This Python-based tool delivers in-depth security and quality assessments for cryptocurrency tokens, employing multi-layered filtering to evaluate critical factors like rug pulls, trading volume, and more.
 
 ## Features
 
@@ -23,8 +23,8 @@ A comprehensive security analysis tool for cryptocurrency tokens that integrates
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/crypto-security.git
-cd crypto-security
+git clone https://github.com/griffin-38/crypto-security-scanner-.git
+cd crypto-security-scanner
 ```
 
 2. Create and activate a virtual environment:
@@ -115,7 +115,7 @@ The tool supports the following APIs:
 
 ## Configuration
 
-See `ENV.md` for detailed configuration options and environment variables.
+See `.env` for detailed configuration options and environment variables.
 
 ## Testing
 
@@ -126,20 +126,11 @@ Run the test suite:
 pytest
 
 # Run with coverage report
-pytest --cov=crypto_security tests/
+pytest --cov=crypto_security_scanner/tests
 
 # Run specific test file
-pytest tests/test_security_filter.py
+pytest tests/test_unit_1.py
 ```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
 
 ## Acknowledgments
 

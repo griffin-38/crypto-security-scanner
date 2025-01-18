@@ -10,6 +10,7 @@ jobs:
         issues: write
         pull-requests: write
         contents: write
+        actions: write
       name: Run pr agent on every pull request, respond to user comments
       steps:
         - name: PR Agent action step
