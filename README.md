@@ -126,7 +126,7 @@ Run the test suite:
 pytest
 
 # Run with coverage report
-pytest --cov=crypto_security_scanner tests/
+pytest --cov=crypto_security_scanner/tests
 
 # Run specific test file
 pytest tests/test_unit_1.py
